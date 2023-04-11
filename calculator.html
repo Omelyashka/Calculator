@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calc{
+            display: flex;
+            flex-direction: row;
+        }
+        .calc>input{
+            margin: 10px;
+        }
+        .calc>button{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Калькулятор -->
+    <div class="calc">
+        <input id = "num1" type="number">
+        <input id = "num2" type="number">
+     </div>
+     <div class="calc">  
+        <button id="sum" onclick="x='+';func()">+</button>
+        <button id="minus" onclick = "x='-';func()" >-</button>
+        <button id="multi" onclick ="x='*';func()" >*</button>
+        <button id="divis" onclick = "x='/';func()" >/</button>
+    </div> 
+    <p id="result"></p>
+
+    <!-- №2 -->
+    <button id="btn">Нажми</button>
+    <div id="square"></div>
+    <script> 
+
+
+    let x;
+    function func() {
+    let result;
+    var num1 = Number(document.getElementById("num1").value);
+    var num2 = Number(document.getElementById("num2").value);
+    switch (x) {
+      case '+':
+        result = num1 + num2;
+        break;
+      case '-':
+        result = num1 - num2;
+        break;
+      case '*':
+        result = num1 * num2;
+        break;
+      case '/':
+        if (num2 == null ) {
+          result = infinity;
+        } else {
+          result = num1 / num2;
+        }
+        break;
+    }
+    document.getElementById("result").innerHTML = "Result: " + result;
+  }
+
+        const parent = document.getElementById("square");
+        var arr = []
+        document.getElementById("btn").onclick = function pushBtn() {
+            var newDiv = document.createElement("div");
+            newDiv.style.width = '50px';
+            newDiv.style.height = '50px';
+            newDiv.style.backgroundColor = 'aqua';
+            newDiv.style.border = '2px solid black';
+            newDiv.style.margin = '10px';
+            
+            arr.push(newDiv)
+            if (arr.length < 11) {
+                parent.appendChild(newDiv);
+            } else {
+                newDiv = null
+                
+            }
+            
+        }
+            
+    </script>
+</body>
+</html>
